@@ -12,7 +12,6 @@ import { SharpProcessorAdapter } from '@/modules/image/infrastructure/adapters/i
 import { ImageSourceFactory } from '@/modules/image/domain/image.source.factory';
 import { UrlImageSourceAdapter } from '@/modules/image/infrastructure/adapters/image-source/url-image-source.adapter';
 import { FileImageSourceAdapter } from '@/modules/image/infrastructure/adapters/image-source/file-image-source.adapter';
-import { ImageMagickProcessorAdapter } from '@/modules/image/infrastructure/adapters/image-processor/imagemagick.adapter';
 
 @Module({
   imports: [
@@ -35,7 +34,6 @@ import { ImageMagickProcessorAdapter } from '@/modules/image/infrastructure/adap
     UrlImageSourceAdapter,
     FileImageSourceAdapter,
     ImageSourceFactory,
-    ImageMagickProcessorAdapter,
   ],
 
   exports: [ImageProcessingService],

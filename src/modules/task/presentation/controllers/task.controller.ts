@@ -9,7 +9,7 @@ import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { TaskService } from '@/modules/task/application/services/task.service';
 import { CreateTaskDto } from '@/modules/task/presentation/dtos/create-task.dto';
 import { TaskResponseDto } from '@/modules/task/presentation/dtos/task-response-dto';
-import { ErrorResponseDto } from '@/modules/task/presentation/dtos/error-response.dto';
+import { TaskErrorResponseDto } from '@/modules/task/presentation/dtos/error-response.dto';
 import { ValidationErrorResponseDto } from '@/modules/task/presentation/dtos/validation-error-response.dto';
 
 @ApiTags('Tasks')
@@ -32,7 +32,6 @@ export class TaskController {
   @ApiResponse({
     status: 500,
     description: 'Internal server error',
-    type: ErrorResponseDto
   })
   async createTask(
     @Body() createTaskDto: CreateTaskDto,
@@ -55,12 +54,11 @@ export class TaskController {
   @ApiResponse({
     status: 404,
     description: 'Task not found',
-    type: ErrorResponseDto,
+    type: TaskErrorResponseDto,
   })
   @ApiResponse({
     status: 500,
     description: 'Internal server error',
-    type: ErrorResponseDto
   })
   async getTask(@Param('id') id: string): Promise<TaskResponseDto> {
     return await this.taskService.getTask(id);

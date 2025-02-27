@@ -1,4 +1,4 @@
-import { Task } from '../../domain/models/task.model';
+import { Task } from '@/modules/task/domain/models/task.model';
 
 export interface TaskRepositoryPort {
   create(task: Task): Promise<Task>;

@@ -12,20 +12,17 @@ export class SharpProcessorAdapter implements ImageProcessorPort {
     outputPath: string,
     resolution: number,
   ): Promise<string> {
-    // Get image buffer from appropriate source
     const imageSource = this.imageSourceFactory.create(inputPath);
     const imageBuffer = await imageSource.getImageBuffer(inputPath);
 
-    // Clean the output path by removing query parameters
     const cleanOutputPath = outputPath.split('?')[0];
 
-    // Process the image
     await sharp(imageBuffer)
       .resize(resolution, null, {
         withoutEnlargement: true,
         fit: 'inside',
       })
-      .toFile(cleanOutputPath);
+      .toFile(outputPath);
 
     return cleanOutputPath;
   }

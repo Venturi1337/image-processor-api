@@ -22,7 +22,9 @@ export class CreateTaskUseCase {
       const task = this.taskFactory.create(originalPath);
 
       const createdTask = await this.taskRepository.create(task);
-
+      if (!createdTask) {
+        throw new CreateTaskException('Task creation failed');
+      }
       this.eventEmitter.emit(TaskEventTypes.TASK_CREATED, {
         taskId: createdTask._id,
         status: TaskStatus.PENDING,
@@ -30,7 +32,7 @@ export class CreateTaskUseCase {
       });
       return ApiResponse.success(createdTask);
     } catch (error) {
-      throw new CreateTaskException(error.message);
+      throw error
     }
   }
 }

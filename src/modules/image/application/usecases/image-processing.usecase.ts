@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ImageFactory } from '@/modules/image/domain/image.factory';
-import { ImageRepositoryPort } from '@/modules/image/domain/repositories/image.repository';
+import { ImageRepositoryPort } from '@/modules/image/domain/repositories/image.repository.port';
 
 @Injectable()
 export class ImageProcessingUseCase {

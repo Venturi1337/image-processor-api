@@ -30,7 +30,6 @@ export class ImageFactory {
 
     const images: Image[] = [];
     try {
-      // Validate input path first
       if (!isUrl) {
         const exists = await fs.promises
           .access(absoluteInputPath)
@@ -46,6 +45,7 @@ export class ImageFactory {
           resolution,
         );
         const absoluteOutputPath = path.join(process.cwd(), outputPath);
+        const cleanOutputPath = outputPath.split('?')[0];
 
         await fs.promises.mkdir(path.dirname(absoluteOutputPath), {
           recursive: true,
@@ -57,7 +57,7 @@ export class ImageFactory {
           resolution,
         );
 
-        images.push(new Image({ path: outputPath, resolution }));
+        images.push(new Image({ path: cleanOutputPath, resolution }));
       }
     } catch (error) {
       const errorMessage =

@@ -6,7 +6,6 @@ import { CreateTaskException } from '@/modules/task/domain/exceptions/create-tas
 import { Task, TaskStatus } from '@/modules/task/domain/models/task.model';
 import { ApiResponse } from '@/modules/shared/domain/response/api.response';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { ModuleRef } from '@nestjs/core';
 
 describe('CreateTaskUseCase', () => {
   let createTaskUseCase: CreateTaskUseCase;
@@ -66,7 +65,7 @@ describe('CreateTaskUseCase', () => {
   });
 
   it('should throw CreateTaskException when task creation fails', async () => {
-    const error = new Error('Invalid task data');
+    const error = new CreateTaskException('Invalid task data');
     jest.spyOn(taskFactory, 'create').mockImplementation(() => {
       throw error;
     });

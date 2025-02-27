@@ -5,8 +5,8 @@ import { Task, TaskStatus } from '@/modules/task/domain/models/task.model';
 
 export type TaskDocument = HydratedDocument<TaskEntity>;
 
-@Schema({ timestamps: true })
-export class TaskEntity implements Task {
+@Schema({ timestamps: true, collection: 'tasks' })
+export class TaskEntity implements Task { 
   @Prop({ required: true, default: uuidv4() })
   _id: string;
 
