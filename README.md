@@ -6,6 +6,22 @@
 - Node.js 18+ (for local development)
 - Git
 
+## Environment Variables
+
+The application requires the following environment variables to be set in a `.env` file:
+
+```env
+# Server Configuration
+PORT=3000
+
+# Database
+MONGO_URI=mongodb://localhost:27017/taskdb
+
+# Storage Paths
+INPUT_IMAGE_FOLDER=./input                
+OUTPUT_IMAGE_FOLDER=./output
+```
+
 ### Installation 
 
 1. Clone the repositoy
@@ -207,5 +223,3 @@ npm run start:dev
 
 - **BaseException**: Custom base exception class
 - **Domain Exceptions**: Business rule violations
-
-#### Exception Response Format
