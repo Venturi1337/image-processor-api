@@ -20,7 +20,6 @@ export class ImageProcessingService {
     try {
       processedImages = await this.imageProcessingUseCase.execute(dto);
     } catch (error) {
-      console.log('error', error);
       status = TaskStatus.FAILED;
       processError = error.message;
     }
