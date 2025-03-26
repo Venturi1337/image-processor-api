@@ -27,7 +27,7 @@ OUTPUT_IMAGE_FOLDER=./output
 1. Clone the repositoy
 
 ```bash
-git clone https://github.com/yourusername/image-processing-api.git
+git clone https://github.com/Venturi1337/image-processing-api.git
 cd image-processing-api
 ```
 
